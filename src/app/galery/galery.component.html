@@ -1,0 +1,20 @@
+<div class="row">
+	<div class="col-md-12">
+		<h2>Photos</h2>
+	</div>
+
+	<div class="col-md-12">
+		<button class="btn btn-lg btn-info" [class.active]="filterBy === 'all'" (click)="filterBy = 'all'">All</button>
+		<button class="btn btn-lg btn-info" [class.active]="filterBy === 'boats'" (click)="filterBy = 'boats'">Boats</button>
+		<button class="btn btn-lg btn-info" [class.active]="filterBy === 'mountain'" (click)="filterBy = 'mountain'">Mountain</button>
+		<button class="btn btn-lg btn-info" [class.active]="filterBy === 'house'" (click)="filterBy = 'house'">House</button>
+	</div>
+
+	<ul class="thumbnails">
+		<li *ngFor="let image of (images | filter:filterBy )">
+			<a href="#">
+				<img src="{{ image.url }} " class="tn" height="150">
+			</a>
+		</li>
+	</ul>
+</div>
