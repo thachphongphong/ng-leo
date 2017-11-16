@@ -6,10 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  isCollapsed = true;
   constructor() {}
   ngOnInit() { }
-  public get menuIcon(): string {
-    return this.isCollapsed ? '☰' : '✖';
-  }
+
 }

@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { GaleryComponent } from './galery/galery.component';
 const routes: Routes = [
     { path: '', component: HomeComponent },
+    { path: 'home', component: HomeComponent },
     { path: 'photos', component: GaleryComponent },
     { path: 'rooms', component: HomeComponent },
     { path: 'reservations',component: HomeComponent },

@@ -1,35 +1,4 @@
-<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-  <button (click)="isCollapsed = !isCollapsed" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" 
-  data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-  {{menuIcon}}
-  </button>
-  <a (click)="isCollapsed = true" class="navbar-brand" [routerLink]="['/']">LITLE LEO</a>
-  <div class="collapse navbar-collapse" id="navbarNav" [attr.aria-expanded]="!isCollapsed" [ngClass]="{collapse: isCollapsed}">
-    <ul class="nav navbar-nav">
-      <li class="nav-item" [routerLinkActive]="['active']">
-        <a class="nav-link" [routerLink]="['/']">HOME</a>
-      </li>
-      <li class="nav-item" [routerLinkActive]="['active']">
-        <a class="nav-link" [routerLink]="['photos']">PHOTOS</a>
-      </li>
-      <li class="nav-item" [routerLinkActive]="['active']">
-        <a class="nav-link" [routerLink]="['rooms']">ROOMS</a>
-      </li>
-      <li class="nav-item" [routerLinkActive]="['active']">
-        <a class="nav-link" [routerLink]="['reservations']">RESERVATIONS</a>
-      </li>
-      <li class="nav-item" [routerLinkActive]="['active']">
-        <a class="nav-link" [routerLink]="['menu']">DINNER MENU</a>
-      </li>
-      <li class="nav-item" [routerLinkActive]="['active']">
-        <a class="nav-link" [routerLink]="['contact']">CONTACT</a>
-      </li>
-      <li class="nav-item" [routerLinkActive]="['active']">
-        <a class="nav-link" [routerLink]="['guide']">GUEST GUIDE</a>
-      </li>
-      <li class="nav-item" [routerLinkActive]="['active']">
-        <a class="nav-link" [routerLink]="['blog']">BLOG</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+<div class="row justify-content-md-center">
+  <div class="brand">Little Leo homestay and hostel</div>
+  <div class="address-bar">39 Le Van Huu, Hoi an, Viet Nam | (+84)5103917484</div>
+</div>

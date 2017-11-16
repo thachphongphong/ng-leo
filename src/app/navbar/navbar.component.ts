@@ -1,17 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-navbar',
+  selector: 'app-nav',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
-  title='Galery'
-
-  constructor() { }
-
-  ngOnInit() {
+  isCollapsed = true;
+  constructor() {}
+  ngOnInit() { }
+  public get menuIcon(): string {
+    return this.isCollapsed ? '☰' : '✖';
   }
-
 }
