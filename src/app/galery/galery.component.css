@@ -1,15 +1,9 @@
-.thumbnails{
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0;
-    width: 1200px;
-    margin: 20px auto;
-    list-style: none;
+body {
+    padding-top: 54px;
+  }
+  
+@media (min-width: 992px) {
+body {
+    padding-top: 56px;
 }
-
-.tn{
-    margin: 6px;
-    border: 4px solid #eeeeee;
-    box-shadow: #555 1px 1px 8px 1px;
-    cursor: pointer;
 }

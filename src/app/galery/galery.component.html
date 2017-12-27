@@ -1,16 +1,9 @@
-<div class="row">
-	<div class="col-md-12">
-		<button class="btn btn-lg btn-info" [class.active]="filterBy === 'all'" (click)="filterBy = 'all'">All</button>
-		<button class="btn btn-lg btn-info" [class.active]="filterBy === 'boats'" (click)="filterBy = 'boats'">Boats</button>
-		<button class="btn btn-lg btn-info" [class.active]="filterBy === 'mountain'" (click)="filterBy = 'mountain'">Mountain</button>
-		<button class="btn btn-lg btn-info" [class.active]="filterBy === 'house'" (click)="filterBy = 'house'">House</button>
-	</div>
-
-	<ul class="thumbnails">
-		<li *ngFor="let image of (images | filter:filterBy )">
-			<a href="#">
-				<img src="{{ image.url }} " class="tn" height="150">
+<div class="container">
+	<div class="row text-center text-lg-left">
+		<div class="col-lg-3 col-md-4 col-xs-6" *ngFor="let image of (images)">
+			<a href="javascript:void(0)" class="d-block mb-4 h-100" (click)="openModalWithComponent(image.url)">
+				<img class="img-fluid img-thumbnail" src="{{ image.url }} " alt="littleleo">
 			</a>
-		</li>
-	</ul>
+		</div>
+	</div>
 </div>
