@@ -20,11 +20,14 @@ export class LoginComponent implements OnInit {
         private alertService: AlertService) { }
 
     ngOnInit() {
+        this.model.username='linh.do@axonactive.vn';
+        this.model.password='123456';
+
         // reset login status
         this.authenticationService.logout();
 
         // get return url from route parameters or default to '/'
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/admin/dashboard';
     }
 
     login() {
@@ -32,10 +35,11 @@ export class LoginComponent implements OnInit {
         this.authenticationService.login(this.model.username, this.model.password)
             .subscribe(
                 data => {
+                    console.log("navigate to " + this.returnUrl);
                     this.router.navigate([this.returnUrl]);
                 },
-                error => {
-                    this.alertService.error(error);
+                err => {
+                    this.alertService.error(err.error);
                     this.loading = false;
                 });
     }
