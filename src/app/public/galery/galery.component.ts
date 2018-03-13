@@ -10,6 +10,7 @@ import { environment } from '../../../environments/environment';
 import { MessageService } from '../../services/message.service';
 import { Subscription } from 'rxjs/Subscription';
 import { BehaviorSubject } from 'rxjs';
+import { ConfirmComponent } from '../../share/confirm/confirm.component';
 
 
 const API_URL = environment.apiUrl;
@@ -30,7 +31,7 @@ export class GaleryComponent implements OnInit, OnDestroy {
     ignoreBackdropClick: false
   };
 
-  constructor(private _imageService: PhotoService, private modalService: BsModalService, private messageService: MessageService) {
+  constructor(private _photoService: PhotoService, private modalService: BsModalService, private messageService: MessageService) {
     // subscribe to home component messages
     this.subscription = this.messageService.getMessage().subscribe(message => {
       let photo = message.get("UPLOAD_SUCCESS");
@@ -46,7 +47,7 @@ export class GaleryComponent implements OnInit, OnDestroy {
   }
 
   loadAllImages() {
-    this._imageService.getImages().subscribe(
+    this._photoService.getImages().subscribe(
       (res: LeoRes) => {
         if (res.success) {
           this.photos$ = res.data;
@@ -55,12 +56,12 @@ export class GaleryComponent implements OnInit, OnDestroy {
     )
   }
 
-  openModalWithComponent(image) {
+  openModalWithComponent(photo) {
     this.bsModalRef = this.modalService.show(ImageComponent,
       Object.assign({}, this.config, { class: 'gray modal-lg' })
     );
-    this.bsModalRef.content.title = 'Photo of LEO';
-    this.bsModalRef.content.imageURL = this.getImageSrc(image);
+    this.bsModalRef.content.title = photo.title;
+    this.bsModalRef.content.imageURL = this.getImageSrc(photo.image);
   }
 
   getImageSrc(image) {
@@ -71,4 +72,34 @@ export class GaleryComponent implements OnInit, OnDestroy {
     // unsubscribe to ensure no memory leaks
     this.subscription.unsubscribe();
   }
+
+  deleteImg(photo){
+    this._photoService.delImage(photo).subscribe(
+      (res: LeoRes) => {
+        if (res.success) {
+          let p = res.data;
+          this.photos$ = this.photos$.filter(item => item.id != p.id);
+        }
+      }
+    )
+  }
+
+  showConfirmationModal(photo): void {
+    const modal = this.modalService.show(ConfirmComponent);
+    (<ConfirmComponent>modal.content).showConfirmationModal(
+        'Delete photo',
+        'Are you sure to delete this photo?'
+    );
+
+    (<ConfirmComponent>modal.content).onClose.subscribe(result => {
+        if (result === true) {
+          this.deleteImg(photo);
+        } else if(result === false) {
+            // when pressed No
+        } else {
+            // When closing the modal without no or yes
+        }
+    });
+}
+
 }

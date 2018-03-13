@@ -8,6 +8,7 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { ImageComponent } from '../public/image/image.component';
 import { MessageService } from '../services/message.service';
+import { ConfirmComponent } from './confirm/confirm.component';
 
 @NgModule({
     imports: [
@@ -19,8 +20,8 @@ import { MessageService } from '../services/message.service';
     ],
     declarations: [
       GaleryComponent,
-      ImageComponent
-
+      ImageComponent,
+      ConfirmComponent
     ],
     providers: [
       PhotoService,
@@ -30,7 +31,8 @@ import { MessageService } from '../services/message.service';
       GaleryComponent
     ],
     entryComponents: [
-      ImageComponent
+      ImageComponent,
+      ConfirmComponent
     ],
 })
 export class ShareModule { }

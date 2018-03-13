@@ -12,6 +12,7 @@ import { MessageService } from '../../services/message.service';
 })
 export class PhotoComponent {
   formGroup: FormGroup;
+  loading = false;
 
   @ViewChild('fileInput') fileInput: ElementRef;
 
@@ -21,13 +22,14 @@ export class PhotoComponent {
 
   createForm() {
     this.formGroup = this.fb.group({
-      name: ['', Validators.required],
+      name: ["", Validators.required],
       category : 'ROOM',
       photo: null
     });
   }
 
   onFileChange(event) {
+    this.loading = false;
     if (event.target.files.length > 0) {
       let file = event.target.files[0];
       this.formGroup.get('photo').setValue(file);
@@ -43,17 +45,21 @@ export class PhotoComponent {
   }
 
   onSubmit() {
+    this.loading = true;
     const formModel = this.prepareSave();
     this.photoService.upload(formModel).subscribe(
       (res: LeoRes) => {
         if (res.success) {
           this.messageService.sendMessage("UPLOAD_SUCCESS",res.data);
         }
+        this.loading = false;
       });
   }
 
   clearFile() {
+    this.loading = false;
+    this.formGroup.get('name').setValue("");
+    this.formGroup.get('category').setValue("ROOM");
     this.formGroup.get('photo').setValue(null);
-    this.fileInput.nativeElement.value = '';
   }
 }

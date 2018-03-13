@@ -12,6 +12,6 @@ export class Photo {
     constructor(
         public id: number, 
         public category: String, 
-        public title: boolean, 
+        public title: String, 
         public image: String) { }
 }

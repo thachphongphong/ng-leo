@@ -1,7 +1,10 @@
 <div class="container">
 	<div class="row text-center text-lg-left">
 		<div class="col-lg-3 col-md-4 col-xs-6" *ngFor="let photo of photos$">
-			<a href="javascript:void(0)" class="d-block mb-4 h-100" (click)="openModalWithComponent(photo.image)">
+			<button type="button" class="close" aria-label="Delete" (click)="showConfirmationModal(photo)">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<a href="javascript:void(0)" class="d-block mb-4 h-100" (click)="openModalWithComponent(photo)">
 				<img class="img-fluid img-thumbnail" [src]="getImageSrc(photo.image)">
 			</a>
 		</div>

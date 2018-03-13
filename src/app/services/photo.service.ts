@@ -20,6 +20,10 @@ export class PhotoService {
     return this.http.get<LeoRes>(API_URL + '/api/photos');
   }
 
+  delImage(photo) {
+    return this.http.delete<LeoRes>(API_URL + '/api/photo/' + photo.id);
+  }
+
   getStaticImages() {
     return this.visibleImage = IMAGES.slice(0)
   }
