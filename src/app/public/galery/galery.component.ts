@@ -12,6 +12,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { BehaviorSubject } from 'rxjs';
 import { ConfirmComponent } from '../../share/confirm/confirm.component';
 import { AlertService } from '../../services/alert.service';
+import { AuthenticationService } from '../../services/authentication.service';
 
 
 const API_URL = environment.apiUrl;
@@ -25,6 +26,7 @@ export class GaleryComponent implements OnInit, OnDestroy {
   public photos$: IPhoto[];
   bsModalRef: BsModalRef;
   subscription: Subscription;
+  isLogin: boolean;
   config = {
     animated: true,
     keyboard: true,
@@ -32,7 +34,8 @@ export class GaleryComponent implements OnInit, OnDestroy {
     ignoreBackdropClick: false
   };
 
-  constructor(private _photoService: PhotoService, private modalService: BsModalService, private messageService: MessageService, private alertService: AlertService) {
+  constructor(private _photoService: PhotoService, private modalService: BsModalService, 
+    private messageService: MessageService, private alertService: AlertService, private auth: AuthenticationService) {
     // subscribe to home component messages
     this.subscription = this.messageService.getMessage().subscribe(message => {
       let photo = message.get("UPLOAD_SUCCESS");
@@ -41,6 +44,11 @@ export class GaleryComponent implements OnInit, OnDestroy {
         this.photos$.push(photo);
       }
     });
+    auth.isLoggedIn().subscribe(
+      (res: boolean) =>{
+        this.isLogin = res;
+      }
+    );
   }
 
   ngOnInit() {

@@ -9,6 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ImageComponent } from '../public/image/image.component';
 import { MessageService } from '../services/message.service';
 import { ConfirmComponent } from './confirm/confirm.component';
+import { AlertService } from '../services/alert.service';
+import { AuthenticationService } from '../services/authentication.service';
 
 @NgModule({
     imports: [
@@ -25,7 +27,9 @@ import { ConfirmComponent } from './confirm/confirm.component';
     ],
     providers: [
       PhotoService,
-      MessageService
+      MessageService,
+      AlertService,
+      AuthenticationService
     ],
     exports: [
       GaleryComponent

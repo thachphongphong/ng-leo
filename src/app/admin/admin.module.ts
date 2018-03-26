@@ -6,8 +6,6 @@ import { RegisterComponent } from './register/register.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './guards/auth.guard';
-import { AlertService } from '../services/alert.service';
-import { AuthenticationService } from '../services/authentication.service';
 import { UserService } from '../services/user.service';
 import { JwtInterceptor } from '../_helpers/jwt.interceptor';
 import { fakeBackendProvider } from '../_helpers/fake-backend';
@@ -37,8 +35,6 @@ import { ShareModule } from '../share/share.module';
   ],
   providers: [
     AuthGuard,
-    AlertService,
-    AuthenticationService,
     PhotoService,
     UserService,
         {

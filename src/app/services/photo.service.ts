@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { LeoRes } from '../admin/models/leo-res';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/catch';
 
 const API_URL = environment.apiUrl;
 
