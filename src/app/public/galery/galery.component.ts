@@ -11,6 +11,7 @@ import { MessageService } from '../../services/message.service';
 import { Subscription } from 'rxjs/Subscription';
 import { BehaviorSubject } from 'rxjs';
 import { ConfirmComponent } from '../../share/confirm/confirm.component';
+import { AlertService } from '../../services/alert.service';
 
 
 const API_URL = environment.apiUrl;
@@ -31,7 +32,7 @@ export class GaleryComponent implements OnInit, OnDestroy {
     ignoreBackdropClick: false
   };
 
-  constructor(private _photoService: PhotoService, private modalService: BsModalService, private messageService: MessageService) {
+  constructor(private _photoService: PhotoService, private modalService: BsModalService, private messageService: MessageService, private alertService: AlertService) {
     // subscribe to home component messages
     this.subscription = this.messageService.getMessage().subscribe(message => {
       let photo = message.get("UPLOAD_SUCCESS");
@@ -80,8 +81,11 @@ export class GaleryComponent implements OnInit, OnDestroy {
           let p = res.data;
           this.photos$ = this.photos$.filter(item => item.id != p.id);
         }
+      },
+      err => {
+          this.alertService.error(err.error);
       }
-    )
+    );
   }
 
   showConfirmationModal(photo): void {

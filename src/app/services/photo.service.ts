@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { LeoRes } from '../admin/models/leo-res';
+import { Observable } from 'rxjs/Observable';
 
 const API_URL = environment.apiUrl;
 
@@ -13,19 +14,24 @@ export class PhotoService {
   }
 
   upload(formData: FormData) {
-    return this.http.post<any>(API_URL + '/api/photo/upload', formData);
+    return this.http.post<any>(API_URL + '/api/photo/upload', formData).catch(this.handleError);;
   }
 
   getImages() {
-    return this.http.get<LeoRes>(API_URL + '/api/photos');
+    return this.http.get<LeoRes>(API_URL + '/api/photos').catch(this.handleError);;
   }
 
   delImage(photo) {
-    return this.http.delete<LeoRes>(API_URL + '/api/photo/' + photo.id);
+    return this.http.delete<LeoRes>(API_URL + '/api/photo/' + 100).catch(this.handleError);;
   }
 
   getStaticImages() {
     return this.visibleImage = IMAGES.slice(0)
+  }
+
+  private handleError(error: any) { 
+    let errMsg = (error.message) ? error.message : error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+    return Observable.throw(error);
   }
 }
 

@@ -53,6 +53,7 @@ export class PhotoComponent {
           this.messageService.sendMessage("UPLOAD_SUCCESS",res.data);
         }
         this.loading = false;
+        this.clearFile();
       });
   }
 
