@@ -22,7 +22,7 @@ export class PhotoService {
   }
 
   delImage(photo) {
-    return this.http.delete<LeoRes>(API_URL + '/api/photo/' + 100).catch(this.handleError);;
+    return this.http.delete<LeoRes>(API_URL + '/api/photo/' + photo.id).catch(this.handleError);;
   }
 
   getStaticImages() {
