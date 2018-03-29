@@ -1,10 +1,36 @@
-
-<div class="modal-header">
-  <h4 class="modal-title pull-left">{{title}}</h4>
-  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-<div class="modal-body">
-  <img class="img-fluid" src="{{ imageURL }} " alt="littleleo">
+<div class="modal-content">
+  <div class="modal-header">
+    <form class="container">
+      <div *ngIf="mode==0" class="row">
+        <div class="col-auto mr-auto"><h5 class="modal-title">{{title}}</h5></div>
+        <div class="col-auto"><span class="badge badge-pill badge-info">{{category}}</span></div>        
+      </div>
+      <div *ngIf="mode==1" class="form-row">
+        <div class="form-group col-sm-8">
+          <label for="title">Title:</label>
+          <input type="title" class="form-control" name="title" [(ngModel)]="title" placeholder="{{title}}">
+        </div>
+        <div class="form-group col-sm-4">
+          <label for="category">Category:</label>
+          <select class="form-control" name="category" [(ngModel)]="category">
+            <option value="ROOM">ROOM</option>
+            <option value="PHOTO">PHOTO</option>
+            <option value="OTHER">OTHER</option>
+          </select>
+        </div>
+      </div>
+    </form>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="text-center">
+      <img class="img-fluid" [src]="getImageSrc(image)" alt="{{title}}">
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="bsModalRef.hide()">Close</button>
+    <button type="button" class="btn btn-primary" (click)="editPhoto()">Save changes</button>
+  </div>
 </div>

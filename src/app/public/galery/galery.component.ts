@@ -43,6 +43,11 @@ export class GaleryComponent implements OnInit, OnDestroy {
         // this.loadAllImages();
         this.photos$.push(photo);
       }
+      photo = message.get("EDIT_SUCCESS");
+      if (photo != null) {
+        this.photos$ = this.photos$.filter(item => item.id != photo.id);
+        this.photos$.push(photo);
+      }
     });
     auth.isLoggedIn().subscribe(
       (res: boolean) =>{
@@ -70,7 +75,21 @@ export class GaleryComponent implements OnInit, OnDestroy {
       Object.assign({}, this.config, { class: 'gray modal-lg' })
     );
     this.bsModalRef.content.title = photo.title;
-    this.bsModalRef.content.imageURL = this.getImageSrc(photo.image);
+    this.bsModalRef.content.category = photo.category;
+    this.bsModalRef.content.mode = 0;
+    this.bsModalRef.content.image = photo.image;
+    this.bsModalRef.content.id = photo.id;
+  }
+
+  openEditWithComponent(photo) {
+    this.bsModalRef = this.modalService.show(ImageComponent,
+      Object.assign({}, this.config, { class: 'gray modal-lg' })
+    );
+    this.bsModalRef.content.title = photo.title;
+    this.bsModalRef.content.category = photo.category;
+    this.bsModalRef.content.mode = 1;
+    this.bsModalRef.content.image = photo.image;
+    this.bsModalRef.content.id = photo.id;
   }
 
   getImageSrc(image) {
@@ -112,6 +131,6 @@ export class GaleryComponent implements OnInit, OnDestroy {
             // When closing the modal without no or yes
         }
     });
-}
+  }
 
 }

@@ -30,10 +30,15 @@ export class PhotoService {
     return this.visibleImage = IMAGES.slice(0)
   }
 
+  editPhoto(photo){
+    return this.http.put<LeoRes>(API_URL + '/api/photo/edit', photo).catch(this.handleError);;
+  }
+
   private handleError(error: any) { 
     let errMsg = (error.message) ? error.message : error.status ? `${error.status} - ${error.statusText}` : 'Server error';
     return Observable.throw(error);
   }
+  
 }
 
 const IMAGES = [
