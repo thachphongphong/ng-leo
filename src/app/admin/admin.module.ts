@@ -16,6 +16,7 @@ import { AlertComponent } from './_directives/alert.directive';
 import { PhotoComponent } from './photo/photo.component';
 import { PhotoService } from '../services/photo.service';
 import { ShareModule } from '../share/share.module';
+import { RoomComponent } from './room/room.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ShareModule } from '../share/share.module';
     RegisterComponent,
     DashboardComponent,
     PhotoComponent,
+    RoomComponent,
   ],
   imports: [
     CommonModule,

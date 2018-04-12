@@ -2,6 +2,7 @@ import { NgModule }       from '@angular/core';
 import { CommonModule }   from '@angular/common';
 import { FormsModule }    from '@angular/forms';
 import { GaleryComponent } from '../public/galery/galery.component';
+import { RoomComponent } from '../public/room/room.component';
 import { ModalModule } from 'ngx-bootstrap/modal/modal.module';
 import { PhotoService } from '../services/photo.service';
 import { HttpModule } from '@angular/http';
@@ -11,6 +12,7 @@ import { MessageService } from '../services/message.service';
 import { ConfirmComponent } from './confirm/confirm.component';
 import { AlertService } from '../services/alert.service';
 import { AuthenticationService } from '../services/authentication.service';
+import { RoomService } from '../public/shared/room.service';
 
 @NgModule({
     imports: [
@@ -22,17 +24,20 @@ import { AuthenticationService } from '../services/authentication.service';
     ],
     declarations: [
       GaleryComponent,
+      RoomComponent,
       ImageComponent,
       ConfirmComponent
     ],
     providers: [
       PhotoService,
+      RoomService,
       MessageService,
       AlertService,
       AuthenticationService
     ],
     exports: [
-      GaleryComponent
+      GaleryComponent,
+      RoomComponent
     ],
     entryComponents: [
       ImageComponent,

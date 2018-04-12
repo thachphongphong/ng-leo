@@ -1,0 +1,11 @@
+<form>
+    <div class="form-group">
+      <label for="room-type">Room Select</label>
+      <select class="form-control" id="room-type" (change)="onChange($event.target.value)">
+        <option>Double Room</option>
+        <option>Single Room</option>
+        <option>Dorm</option>
+      </select>
+    </div>
+</form> 
+<app-room [isLogin]="isLogin" [mode]="mode"></app-room>

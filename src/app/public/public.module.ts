@@ -9,15 +9,12 @@ import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { ImageComponent } from './image/image.component';
 import { FilterPipe } from './shared/filter.pipe';
-import { RoomComponent } from './room/room.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { MenuComponent } from './menu/menu.component';
 import { ContactComponent } from './contact/contact.component';
 import { GuideComponent } from './guide/guide.component';
 import { BlogComponent } from './blog/blog.component';
-import { RoomService } from './shared/room.service';
 import { PublicRoutingModule } from './public-routing.module';
 import { CommonModule } from '@angular/common';
 import { PublicComponent } from './public.component';
@@ -40,7 +37,6 @@ import { ShareModule } from '../share/share.module';
     FooterComponent,
     NavbarComponent,
     FilterPipe,
-    RoomComponent,
     ReservationComponent,
     MenuComponent,
     ContactComponent,
@@ -48,8 +44,7 @@ import { ShareModule } from '../share/share.module';
     BlogComponent
   ],
   providers: [
-    FilterPipe,
-    RoomService
+    FilterPipe
   ],
   exports: []
 })

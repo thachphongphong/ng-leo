@@ -6,6 +6,7 @@ import { RegisterComponent } from './register/register.component';
 import { AdminComponent } from './admin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PhotoComponent } from './photo/photo.component';
+import { RoomComponent } from './room/room.component';
 const routes: Routes = [
     {
         path: '', component: AdminComponent,
@@ -19,6 +20,9 @@ const routes: Routes = [
             },
             {
                 path: 'photo', component: PhotoComponent
+            },
+            {
+                path: 'room', component: RoomComponent
             },
             {
                 path: '',

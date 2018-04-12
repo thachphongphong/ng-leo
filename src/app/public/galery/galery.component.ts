@@ -35,7 +35,10 @@ export class GaleryComponent implements OnInit, OnDestroy {
   };
 
   constructor(private _photoService: PhotoService, private modalService: BsModalService, 
-    private messageService: MessageService, private alertService: AlertService, private auth: AuthenticationService) {
+    private messageService: MessageService, private alertService: AlertService, private auth: AuthenticationService) { }
+
+  ngOnInit() {
+    this.loadAllImages();
     // subscribe to home component messages
     this.subscription = this.messageService.getMessage().subscribe(message => {
       let photo = message.get("UPLOAD_SUCCESS");
@@ -49,15 +52,11 @@ export class GaleryComponent implements OnInit, OnDestroy {
         this.photos$.push(photo);
       }
     });
-    auth.isLoggedIn().subscribe(
+    this.auth.isLoggedIn().subscribe(
       (res: boolean) =>{
         this.isLogin = res;
       }
     );
-  }
-
-  ngOnInit() {
-    this.loadAllImages();
   }
 
   loadAllImages() {

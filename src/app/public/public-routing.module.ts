@@ -13,7 +13,6 @@ import { PublicComponent } from './public.component';
 const routes: Routes = [
     { path: '', component: PublicComponent ,
     children: [
-        { path: '', component: HomeComponent },
         { path: 'home', component: HomeComponent },
         { path: 'photos', component: GaleryComponent},
         { path: 'rooms', component: RoomComponent },
