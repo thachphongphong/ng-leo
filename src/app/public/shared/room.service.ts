@@ -1,8 +1,16 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/catch';
+import { environment } from '../../../environments/environment';
+import { LeoRes } from '../../admin/models/leo-res';
+
+const API_URL = environment.apiUrl;
 
 @Injectable()
 export class RoomService {
-  constructor() { }
+
+  constructor(private http: HttpClient) {}
 
   getRooms() {
     return ROOMS.slice(0)
@@ -12,6 +20,14 @@ export class RoomService {
     return ROOMS.slice(0).filter(item => item.title == name);
   }
 
+  editRoom(room){
+    return this.http.put<LeoRes>(API_URL + '/api/rooms/edit', room).catch(this.handleError);;
+  }
+
+  private handleError(error: any) { 
+    let errMsg = (error.message) ? error.message : error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+    return Observable.throw(error);
+  }
 }
 
 const ROOMS = [

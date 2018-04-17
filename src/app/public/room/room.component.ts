@@ -78,5 +78,4 @@ export class RoomComponent implements OnInit{
   getImageSrc(image) {
     return API_URL + '/images/' + image;
   }
-
 }
