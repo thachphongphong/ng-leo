@@ -24,4 +24,5 @@ export class RoomComponent implements OnInit {
   onChange(roomName) {
     this.messageService.sendMessage("ROOM_SELECT", roomName);
   }
+  
 }

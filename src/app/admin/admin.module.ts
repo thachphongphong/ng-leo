@@ -26,7 +26,7 @@ import { RoomComponent } from './room/room.component';
     RegisterComponent,
     DashboardComponent,
     PhotoComponent,
-    RoomComponent,
+    RoomComponent
   ],
   imports: [
     CommonModule,

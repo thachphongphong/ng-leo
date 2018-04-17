@@ -13,6 +13,7 @@ import { ConfirmComponent } from './confirm/confirm.component';
 import { AlertService } from '../services/alert.service';
 import { AuthenticationService } from '../services/authentication.service';
 import { RoomService } from '../public/shared/room.service';
+import { RoomModalComponent } from '../admin/room-modal/room-modal.component';
 
 @NgModule({
     imports: [
@@ -26,6 +27,7 @@ import { RoomService } from '../public/shared/room.service';
       GaleryComponent,
       RoomComponent,
       ImageComponent,
+      RoomModalComponent,
       ConfirmComponent
     ],
     providers: [
@@ -41,6 +43,7 @@ import { RoomService } from '../public/shared/room.service';
     ],
     entryComponents: [
       ImageComponent,
+      RoomModalComponent,
       ConfirmComponent
     ],
 })

@@ -1,19 +1,33 @@
 <div class="container">
-  <div class="card mt-3 pb-2" *ngFor="let room of rooms$">
-    <img class="card-img-top" src="{{room.image}}" alt="{{room.title}}">
-    <div class="card-block">
-      <h4 class="card-title">{{room.title}}</h4>
-      <p class="card-text">{{room.descs}}</p>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item" *ngFor="let fu of room.furniter">
-          <img src="assets/icon/ic_done_black_24px.svg">{{fu}}
-        </li>
-      </ul>
-      <div class="card-footer">
-        <small class="text-muted">
-          <span class="btn btn-info btn-sm">Quantity : {{room.quality}}</span>
-        </small>
-        <button type="button" class="btn btn-success btn-sm float-right">{{room.price}}$</button>
+  <div class="row text-center text-lg-left">
+    <div class="card mt-3 pb-2" *ngFor="let room of rooms$">
+      <img class="card-img-top" src="{{room.image}}" alt="{{room.title}}">
+      <div class="card-img-overlay">
+        <div *ngIf="isLogin" class="float-right">
+          <button type="button" class="btn btn-light btn-sm btn-default" aria-label="Edit" (click)="openEditWithComponent(room)">
+            <span class="fa fa-pencil-square-o" aria-hidden="true"></span>
+          </button>
+          <button type="button" class="btn btn-light btn-sm btn-default" aria-label="Delete" (click)="showConfirmationModal(room)">
+            <span class="fa fa-window-close" aria-hidden="true"></span>
+          </button>
+        </div>
+        <h5 class="card-title">{{room.title}}</h5>
+        <p class="card-text">{{room.desc}}.</p>
+      </div>
+      <div class="card-block">
+        <h4 class="card-title">Top amenities</h4>
+        <!-- <p class="card-text">{{room.desc}}</p> -->
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" *ngFor="let fu of room.furniter">
+            <img src="assets/icon/ic_done_black_24px.svg">{{fu}}
+          </li>
+        </ul>
+        <div class="card-footer">
+          <small class="text-muted">
+            <span class="btn btn-info btn-sm">Quantity : {{room.quality}}</span>
+          </small>
+          <button type="button" class="btn btn-success btn-sm float-right">{{room.price}}$</button>
+        </div>
       </div>
     </div>
   </div>
